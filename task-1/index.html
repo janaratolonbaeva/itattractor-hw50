@@ -7,18 +7,39 @@
   <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <style>
+    .container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .container img {
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="container1" class="container"></div>
+  <div id="container2" class="container"></div>
+  <div id="container3" class="container"></div>
   <script type="text/babel">
     const Movie = props => {
       return (
         <div className="movie">
           <h1>Movie title: {props.title}</h1>
-          
+          <h3>Year of issue: {props.year}</h3>
+          <img src={props.url}/>
         </div>
       );
     };
+
+    const container1 = document.querySelector('#container1');
+    const container2 = document.querySelector('#container2');
+    const container3 = document.querySelector('#container3');
+
+    ReactDOM.render(<Movie title="Bangkok Hilton" year="1987" url="https://upload.wikimedia.org/wikipedia/ru/thumb/d/de/Bangkok_Hilton_1989.jpg/274px-Bangkok_Hilton_1989.jpg"/>, container1);
+    ReactDOM.render(<Movie title="Pride and Prejudice" year="2005" url="https://cdn.britannica.com/06/213606-050-50B74011/Publicity-still-Colin-Firth-Jennifer-Ehle-Pride-and-Prejudice-1995.jpg"/>, container2);
+    ReactDOM.render(<Movie title="What Dreams May Come" year="1998" url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5zKi_7xrDFDlobnNN_o8CpmxKzW2ii9Fsuw&usqp=CAU"/>, container3);
   </script>
 </body>
 </html>
